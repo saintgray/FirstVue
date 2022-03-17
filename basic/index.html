@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vue.js 소스코드를 cdn 서버에서 다운로드-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    
+    <title>Vue</title>
+</head>
+<body>
+   
+    <h3> Vue 인스턴스 </h3>
+    <div id="app">
+        {{message}}
+    </div>
+
+
+    <h3> Vue 인스턴스의 유효범위 </h3>
+    <div id="scopetest">
+        {{greeting}}
+    </div>
+        {{greeting}}
+        <!-- 유효범위를 벗어났기 때문에 적용되지 않음-->
+
+    
+    <h3> Vue 인스턴스 Life Cycle </h3>
+
+    <div id="lifecycle">
+        {{lifecycle}}
+    </div>
+
+
+
+    
+
+
+    
+
+    <!-- Vue.js 스크립트는 body 태그 내에 선언되어야 el 에 해당하는 element 를 찾아갈 수 있다. -->
+    <script src="basicvue.js"></script>
+</body>
+</html>
