@@ -5,11 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
-    <script src="component.js"></script>
+    
     <title>Component</title>
 
 </head>
 <body>
     
+
+    <div id="comp">
+        <h3>전역컴포넌트</h3>
+        <!-- component 이름을 태그로 명시하여 내부적으로 해당 이름의 component의 template 에 지정한
+             요소로 바꾸어 준다.-->
+        <global-comp></global-comp>
+        <h3>지역컴포넌트</h3>
+        <local-comp></local-comp> 
+    </div>
+    
+
+ 
+
+    <div id="templateComponent">
+        <template-comp></template-comp>
+    </div>
+
+
+
+    <!-- 전역 컴포넌트를 등록할 때 문자열로 구성하는 방법을 유지보수에 바람직 하지 않다.-->
+    <!-- 따라서 template 태그를 사용하여 스크립트에서 그 template 태그가 가지는 id 를 참조하도록
+    하여 컴포넌트로 등록하는 것이 바람직하다. -->
+    <template id="test">
+        <div>템플릿 안의 요소내용입니다</div>
+    </template>
+
+
+    <script src="component.js"></script>
 </body>
 </html>
