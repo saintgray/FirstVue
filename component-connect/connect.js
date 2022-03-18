@@ -88,11 +88,44 @@ var childComp=new Vue({
     }
 });
 
+
+
 // 주의할 점은 하위 컴포넌트를 먼저 정의하고 상위 컴포넌트를 정의해야 한다.
 
 
 // 관계없는 두 컴포넌트(동 레벨의 컴포넌트) 간의 통신
 // eventBus 를 사용하여 데이터를 주고받을 수 있다.
+// 이벤트를 전송하는 목적 하나만 있는 Vue 인스턴스를 생성한다.
+var eventBus=new Vue();
+// 하위 컴포넌트를 생성한다.
+Vue.component('third-child-component',{
+    template:'<button type="button" v-on:click="showLog">eventBus로 데이터 전송</button>',
+    methods:{
+        showLog:function(){
+           // eventBus 인스턴스에 triggerEventBus 라는 이름으로
+           // 100 이라는 데이터 전송
+           eventBus.$emit('triggerEventBus', 100);
+        }
+    }
+});
+
+// 즉 eventBus 라는 Vue instance 와 third-child-component 라는 인스턴스를 이용하여 이벤트를 보내고 받는다.
+
+var parentComp=new Vue({
+    el:'#eventBusTest',
+    created:function(){
+        eventBus.$on('triggerEventBus',function(value){
+            console.log("eventBus가 전달한 데이터 : ", value);
+        });    
+    }
+});
+// 보내는 컴포넌트 쪽에서는 .$emit()을, 받는 컴포넌트(관계없는 컴포넌트)에서는 .$on() 을 구현하여 받는다.
+
+
+
+
+
+
 
 
 

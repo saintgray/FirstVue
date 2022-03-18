@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <!--router cdn-->
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+
+
+    <style>
+
+        #routerLinkArea{
+            display: flex;
+            flex-direction: column;
+        }
+
+        #routerViewArea{
+            margin-top:50px;
+            border: 1px solid black;
+            min-height: 100px;
+        }
+
+    </style>
+
+
+    <title>View Router</title>
+</head>
+<body>
+
+    <!-- Routing -->
+    
+    <!-- SPA 에서 주로 사용하기 위한 웹 페이지 간의 이동 방법을 의미한다. 
+         레거시 방식의 웹 페이지 구현은 사용자의 요청에 따라 Model 객체에 데이터를 담아 화면을 다시 갱신하지만
+         SPA 방식은 Single Page Application 으로 페이지가 단 하나로만 구성되기 때문에 갱신 시간동안 특유의 깜박거림 현상이 없으며
+         매끄럽게 전환할 뿐만 아니라 더 빠르게 화면을 조작할 수 있어 UX 향상에 크게 기여한다.
+
+         React , Angular 또한 이 라우팅 기술을 이용하여 화면을 전환하고 있으며, 프론트엔드 프레임워크를 사용하지 않고
+         일반 HTML 파일들로도 라우팅 자바 스크립트 라이브러리를 이용하여 라우팅 방식의 페이지 이동을 구현할 수 있다.
+    -->
+
+    <!-- View Router -->
+    <!-- View Router 는 Routing 기능을 구현할 수 있도록 지원하는 라이브러리이다. -->
+
+    <div id="router">
+
+        <h1>Vue Router</h1>
+
+        <div id="routerLinkArea">
+            <router-link to="/main">Main Component</router-link>
+            <router-link to="/login">Login Component</router-link>            
+        </div>
+
+        <div id="routerViewArea">
+
+            <router-view></router-view>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="router.js"></script>
+</body>
+
+
+    
+</body>
+</html>
