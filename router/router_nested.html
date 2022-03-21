@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+    
+
+    <style>
+        *{
+            text-align:center;
+        }        
+        #parent-template{
+            border: 1px solid black;
+            width: 500px;
+            position: absolute;
+            left:50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+                      
+        }
+
+        #first-children{
+            border: 1px solid red;
+        }
+        #second-children{
+            border: 1px solid blue;
+        }
+
+        #first-children, #second-children, #parent-template{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+    </style>
+    <title>Nested Router</title>
+</head>
+<body>
+
+    <!-- Nested Router -->
+
+    <!-- 
+            라우터로 페이지를 이동 시 최소 2개 이상의 컴포넌트를 화면에 나타낼 수 있다. 
+            Nested(중첩) 의 단어에서도 추측할 수 있듯이 상위 컴포넌트 1개 안에 하위 컴포넌트
+            가 1개 이상이 있는 구조이다.
+    -->
+    
+
+
+    <template id="parent">
+        <div id="parent-template">Parent Component
+            <!-- 하위 컴포넌트가 뿌려지는 router 영역 -->
+            <!-- routes 를 정의할 때에 component 는 parent 로 ,
+                 그 아래 하위 컴포넌트를 children 속성에 배열로 정의하였기 때문에
+                 이 router-view 태그는 children 속성에 정의한 component 가 뿌려지는 영역이 된다
+                 주의할 점은 Root 를 하나로 설정해야 하기 때문에 parent 에 해당하는 요소는 단 하나여야 하며
+                 router-view 태그는 이 <div> 영역 안에 선언되어야 한다.-->
+             <router-view></router-view>
+        </div>
+        <!-- <router-view></router-view> -->
+        <!-- 이 곳에 선언할 경우 error 발생 : Component template should contain exactly one root element-->
+    </template>
+    <template id="first-children-template">
+
+        <div id="first-children">First Children</div>
+    </template>
+
+    <template id="second-children-template">
+        <div id="second-children">Second Children</div>
+    </template>
+
+
+
+    <div id="view">
+        <router-view></router-view>
+    </div>
+
+    
+    
+
+    
+    <script src="router_nested.js"></script>
+
+    <!-- Url 뒤에 /parent 를 붙이면 parent Component 가 나오며
+         /parent/first, /parent/second 로 중첩 컴포넌트(nested component)
+         를 활성화 할 수 있다.-->
+</body>
+</html>
