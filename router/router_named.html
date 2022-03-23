@@ -17,9 +17,25 @@
     <!-- Nested View 와 달리 Named View 는 특정 페이지로 이동 시 여러개의 
          컴포넌드를 동시에 표시하는 라우팅 방식이다.
          즉 상-하위 관계가 아닌 같은 레벨에서 여러개의 컴포넌트를 한 번에 표시하는 방식이다.-->
+    <template id="header">
+        <div>I AM HEADER</div>
+    </template>
 
-         
+    <template id="footer">
+        <div>I AM FOOTER</div>
+    </template>
 
+    <template id="content">
+        <div>I AM CONTENT</div>
+    </template>
+        
+
+
+    <div id="globalwrap">
+        <router-view name="header"></router-view>
+        <router-view></router-view>
+        <router-view name="footer"></router-view>
+    </div>
 
 
     
