@@ -1,45 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script
-  src="https://code.jquery.com/jquery-1.12.4.min.js"
-  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  crossorigin="anonymous"></script>
-    <title>Document</title>
+    <!-- jquery lib-->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <title>JSON</title>
 </head>
 <body>
-
-    <input type="text" value="123123" readonly id="test">
-    <input type="text" value="오종현" id="myname">
-    
 </body>
+    
 
 <script>
 
     window.onload=function(){
 
-        console.log('준비완료');
+        // 1. JSON.stringify
 
-        var my = document.getElementById('test');
+        // JSON 형태의 문자열
+        var param='{ "email":"abcd@naver.com" , "password":"mypw" , "number":1234}';
 
-        console.log(my.readOnly);
+        // JSON 형태의 문자열을 javascript 객체로 변환 : parse
+        var JObjparam=JSON.parse(param);
+        // param 문자열을 변환시킨 JObjparam은 다음 과 같다
+        //
+        // JObjparam={
+        //     email:"abcd@naver.com",
+        //     password:"mypw",
+        //     number:1234
+        // }
 
+        // 그 안의 정보들을 꺼내어 출력
+        console.log(JObjparam.email);
+        console.log(JObjparam.password);
+        console.log(JObjparam.number);
 
-        if(my.readOnly==true){
-            console.log('읽기전용');
+        // 2. JSON.parse
 
-
-            
+        // param2 : javascript 객체
+        var param2={
+            email:"abcd@naver.com",
+            password:"mypw",
+            number:1234,
         }
         
+        // javascript 객체를 JSON 형태의 문자열로 변환 : stringify
+        var JStrparam2=JSON.stringify(param2);
+        // 출력결과는 param 의 문자열과 같음을 볼 수 있다
+        console.log(JStrparam2);
 
-        console.log($('input').is('readOnly'));
 
-        
-        my.value='333';
+        // 즉 JSON 데이터란
+        // 특정 형식(format)을 갖춘 문자열 {변수1:값, 변수2:값... } 로 이 형식을 가지고
+        // Javascript 객체로 변환할 수도, 객체를 이 형식의 문자열로 변환 할 수 있음을 알 수 있다
+
+        // JQuery 를 사용시 JSON.parse() 는 다음과 같은 형태로 적을 수 있다
+        var JQueryJObj=$.parseJSON(param);
+        console.log(JQueryJObj.email);
+        console.log(JQueryJObj.password);
+        console.log(JQueryJObj.number);
+
+
 
 
     }
